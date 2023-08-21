@@ -1,21 +1,40 @@
 import datetime
 
-def searchfor(x,filepath):
-    with open(filepath, 'r') as f:
-        for i in f:
+def edit_name(new_name,id,filepath):
+    new_lines = []
+
+    with open(filepath, 'r') as file:
+        for i in file:
             employee_data = i.strip().split(',')
-            if employee_data[1] == x:
-                return employee_data
-    return None
+            if employee_data[0] == id:
+                employee_data[1] = new_name
+                i = ','.join(employee_data) + '\n'
+            else :
+                print("ID doesn't exist !")
+            new_lines.append(i)
 
-def edit_name(old_name, new_name):
-    pass
+    with open(filepath, 'w') as file:
+        file.writelines(new_lines)
+        
+        
 
-def edit_id(old_id, new_id):
-    pass
+def edit_gender(new_gender,id,filepath):
+    new_lines = []
 
-def edit_gender(old_gender, new_gender):
-    pass
+    with open(filepath, 'r') as file:
+        for i in file:
+            employee_data = i.strip().split(',')
+            if employee_data[0] == id:
+                employee_data[3] = new_gender
+                i = ','.join(employee_data) + '\n'
+            else :
+                print("ID doesn't exist !")
+            new_lines.append(i)
+
+    with open(filepath, 'w') as file:
+        file.writelines(new_lines)
+
+
 
 def edit_salary(new_salary,id,filepath):
     new_lines = []
@@ -26,10 +45,14 @@ def edit_salary(new_salary,id,filepath):
             if employee_data[0] == id:
                 employee_data[4] = new_salary
                 i = ','.join(employee_data) + '\n'
+            else :
+                print("ID doesn't exist !")
             new_lines.append(i)
 
     with open(filepath, 'w') as file:
         file.writelines(new_lines)
+
+
 
 def getlastid(filepath):# to get the last id from the file 
     with open(filepath, 'r') as data:
@@ -38,12 +61,17 @@ def getlastid(filepath):# to get the last id from the file
             last_id = lines[-1].strip().split(',')[0]
             return last_id[3:]
     return "000"
+
+
+
 def formatid(id):# to write the id in the propper format 
     if len(id) == 1:
         return 'emp00'+id
     elif len(id) == 2:
         return 'emp0'+id
     return 'emp'+id
+
+
 
 def add_employee(name,gender,salary,filepath):
     timestamp = datetime.datetime.now().strftime('%y%m%d')#from https://stackoverflow.com/questions/32490629/getting-todays-date-in-yyyy-mm-dd-in-python
