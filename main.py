@@ -59,10 +59,13 @@ while out_of_tries != True :
                 print(f"There are {male_count} male employees , and {female_count} female employees in the company")
             if choice == '2':
                 name = input("USER NAME : ")
-                gender = input("GENDER : ")
-                salary = input("SALARY : ")
-                add_employee(name,gender,salary,temp_file)
-                print('\nDone !\n')
+                if not search_for(name,temp_file):
+                    gender = input("GENDER : ")
+                    salary = input("SALARY : ")
+                    add_employee(name,gender,salary,temp_file)
+                    print('\nDone !\n')
+                else : 
+                    print("user already exist !")
             if choice == '3':
                 displayemployees(temp_file)
                 print('\nDone !\n')

@@ -84,11 +84,11 @@ def formatid(id):# to write the id in the propper format
 
 
 def add_employee(name,gender,salary,filepath):
-    timestamp = datetime.datetime.now().strftime('%y%m%d')#from https://stackoverflow.com/questions/32490629/getting-todays-date-in-yyyy-mm-dd-in-python
-    intID = int(getlastid(filepath))+1
-    ID = formatid(str(intID))
-    with open(filepath,'a') as data :
-        data.write(f"{ID},{name},20{timestamp},{gender},{salary}\n")
+        timestamp = datetime.datetime.now().strftime('%y%m%d')#from https://stackoverflow.com/questions/32490629/getting-todays-date-in-yyyy-mm-dd-in-python
+        intID = int(getlastid(filepath))+1
+        ID = formatid(str(intID))
+        with open(filepath,'a') as data :
+            data.write(f"{ID},{name},20{timestamp},{gender},{salary}\n")
     
 # with the help of the following documentary https://stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python
 # I was able to create the following funtion
