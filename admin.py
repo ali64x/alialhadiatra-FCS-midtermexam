@@ -39,5 +39,23 @@ def add_employee(name,gender,salary,filepath):
     intID = int(getlastid(filepath))+1
     ID = formatid(str(intID))
     with open(filepath,'a') as data :
-        data.write(f"{ID},{name},{timestamp},{gender},{salary}\n")
+        data.write(f"{ID},{name},'20'{timestamp},{gender},{salary}\n")
     data.close()
+    
+# with the help of the following documentary https://stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python
+# I was able to create the following funtion
+def displayemployees(filepath):
+    with open(filepath,'r') as file: 
+        listofemployees=[]
+        for i in file :
+            data = i.strip().split(',')
+            joining_date = datetime.datetime.strptime(data[2], '%Y%m%d')
+            listofemployees.append({
+                'name': data[1],
+                'timestamp': joining_date,
+            })
+        sortedemployees = sorted(listofemployees, key=lambda x: x['timestamp'])
+        for i in sortedemployees:
+            print(f"Name: {i['name']}")
+
+            

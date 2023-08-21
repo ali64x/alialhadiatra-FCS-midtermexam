@@ -54,3 +54,5 @@ while exit != True :
             gender = input("GENDER : ")
             salary = input("SALARY : ")
             add_employee(name,gender,salary,filepath)
+        if choice == '3':
+            displayemployees(filepath)
