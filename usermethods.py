@@ -13,5 +13,5 @@ def salary_of(username,file_path):
         for i in userdata:
             salarylist = i.strip().split(',')
             if salarylist[1] == username:
-                return salarylist[4]
+                return str(salarylist[4])
     return None
