@@ -56,3 +56,8 @@ while exit != True :
             add_employee(name,gender,salary,filepath)
         if choice == '3':
             displayemployees(filepath)
+        if choice == '4' :
+            id = input("please enter the employee's ID : ")
+            newsalary = input("New salary : ")
+            edit_salary(newsalary,id,filepath)
+            

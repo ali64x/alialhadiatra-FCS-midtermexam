@@ -17,8 +17,19 @@ def edit_id(old_id, new_id):
 def edit_gender(old_gender, new_gender):
     pass
 
-def edit_salary(old_salary, new_salary):
-    pass
+def edit_salary(new_salary,id,filepath):
+    new_lines = []
+
+    with open(filepath, 'r') as file:
+        for i in file:
+            employee_data = i.strip().split(',')
+            if employee_data[0] == id:
+                employee_data[4] = new_salary
+                i = ','.join(employee_data) + '\n'
+            new_lines.append(i)
+
+    with open(filepath, 'w') as file:
+        file.writelines(new_lines)
 
 def getlastid(filepath):# to get the last id from the file 
     with open(filepath, 'r') as data:
