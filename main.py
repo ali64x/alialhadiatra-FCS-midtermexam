@@ -50,4 +50,7 @@ while exit != True :
                     female_count += 1
             print(f"There are {male_count} male employees , and {female_count} female employees in the company")
         if choice == '2':
-            
+            name = input("USER NAME : ")
+            gender = input("GENDER : ")
+            salary = input("SALARY : ")
+            add_employee(name,gender,salary,filepath)
